@@ -1,6 +1,6 @@
 # Healthy Thai Massage
 
-A standalone Next.js + TypeScript + Tailwind CSS website. This project does not touch the Massimo website, DNS, or the existing business domain. No deployment has been performed.
+A standalone Next.js + TypeScript + Tailwind CSS website. This project does not touch the Massimo website, DNS, or the existing business domain. This local update does not change the existing GitHub/Cloudflare deployment or domain configuration.
 
 ## Preview
 
@@ -23,17 +23,17 @@ Open http://127.0.0.1:3000. For production: `npm run build`; the complete static
 
 ## Enable appointment requests only after delivery testing
 
-The form deliberately does not submit in the delivered presentation configuration. Call and SMS links work without a provider. No database or paid scheduler is required.
+The form is an interactive DEMO by default, even if an endpoint or delivery flag remains configured. Demo submission validates input, clears the form, and displays an explicit no-request-sent message. It never invokes fetch, storage, analytics, or logging with form data. Use made-up details. Inputs remain disabled until JavaScript loads, preventing a native form navigation from sending data before hydration. Call and SMS links work without a provider. No database or paid scheduler is required.
 
 1. Create a Formspree form, configure and verify recipient **6464healthy@gmail.com** in the provider dashboard. The recipient is configured there, never via a client-controlled form field. Review the current free-tier limits and privacy terms.
 2. Enable provider spam filtering and provider-side validation. The code includes a `_gotcha` honeypot, browser constraints, and client validation. Client checks alone are not an abuse-control boundary. If abuse occurs, add the provider's supported CAPTCHA before enabling delivery.
-3. Copy `.env.example` to `.env.local`. Set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` to the public `https://formspree.io/f/FORM_ID` endpoint. Keep `NEXT_PUBLIC_FORM_DELIVERY_VERIFIED=false` initially. A form endpoint is public; never place credentials or secret API keys in a `NEXT_PUBLIC_` variable.
-4. Submit a test directly through the provider's test workflow to verify the owner receives it. To exercise the actual interface, temporarily set the verified flag to true **only in an isolated local preview**, rebuild/restart, send an end-to-end request, and verify receipt at the owner's inbox (including spam). Check invalid fields, provider failures, and duplicate-click prevention. Do not publish this test configuration before completing the checks.
-5. If successful, retain `NEXT_PUBLIC_FORM_DELIVERY_VERIFIED=true` for launch. If any test fails, return the flag to false and rebuild. The UI reports success only after a successful HTTP response with Formspree's `ok: true`; it never treats a request as an appointment confirmation.
+3. Copy `.env.example` to `.env.local`. Keep `NEXT_PUBLIC_BOOKING_MODE=demo`. Set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` to the public `https://formspree.io/f/FORM_ID` endpoint. Keep `NEXT_PUBLIC_FORM_DELIVERY_VERIFIED=false` initially. A form endpoint is public; never place credentials or secret API keys in a `NEXT_PUBLIC_` variable.
+4. Submit a test directly through the provider's test workflow to verify the owner receives it. To exercise the actual interface, temporarily set `NEXT_PUBLIC_BOOKING_MODE=live` and the verified flag to true **only in an isolated local preview**, rebuild/restart, send an end-to-end request, and verify receipt at the owner's inbox (including spam). Check invalid fields, provider failures, and duplicate-click prevention. Do not publish this test configuration before completing the checks.
+5. If successful, retain `NEXT_PUBLIC_BOOKING_MODE=live` and `NEXT_PUBLIC_FORM_DELIVERY_VERIFIED=true` for launch. If any test fails, return the flag to false and rebuild. The UI reports success only after a successful HTTP response with Formspree's `ok: true`; it never treats a request as an appointment confirmation.
 
-Optional dates and times are preferences in Houston time, not a promise of availability. The phone/name fields are required; email is optional. No payment data is collected. No personal information is written to local storage or application logs.
+Required dates and times are preferences in Houston time, not a promise of availability. The phone/name fields are required; email is optional. No payment data is collected. No personal information is written to local storage or application logs.
 
-## Cloudflare Pages hosting (prepared, not deployed)
+## Existing Cloudflare Pages hosting
 
 Uses Next.js `output: 'export'`, with no API routes, runtime secrets, image-optimization server, or custom backend. This matches Cloudflare's static Next.js deployment method:
 https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/
@@ -56,3 +56,13 @@ npm run build
 ```
 
 Google Maps is lazy-loaded and uses an external Google embed. The privacy notice names this. Images are self-hosted, with no runtime photography dependency. Motion respects reduced-motion preferences. The form has explicit labels, keyboard focus indicators, and error/status announcements.
+
+## Update the existing GitHub / Cloudflare deployment
+
+1. Extract the updated source ZIP. Upload its contents into the existing healthy-thai-massage repository root (not the ZIP or enclosing folder). Include .gitignore and .env.example; exclude node_modules, .next, out, private .env files and *.tsbuildinfo.
+2. Prefer a new branch named demo-presentation. Commit with: `Polish appointment demo without transmitting customer data`. Open a pull request into the existing production branch.
+3. Review the Cloudflare preview deployment if enabled. Use made-up details, verify the demo response and cleared fields, and confirm phone/SMS links. No provider or email credentials are required.
+4. Merge the pull request when ready. Existing Cloudflare Git integration automatically builds/deploys the production branch unless auto-deploy is disabled. In Workers & Pages > existing Healthy Thai Massage project > Deployments, verify the new commit succeeds and open its URL.
+5. Retain existing build/output settings (`npm run build`, `out`) and DNS/custom-domain configuration. Leave the booking mode unset or set to demo; leave delivery verification false and endpoint empty. No settings changes are needed for demo mode.
+
+If this repository has changed independently since the previous source ZIP, compare and merge these files rather than overwriting unrelated edits. A browser upload updates remote files; it does not create a local Git connection.
