@@ -1,3 +1,16 @@
-import type {MetadataRoute} from 'next';
-export const dynamic='force-static';
-export default function sitemap():MetadataRoute.Sitemap {const origin=process.env.NEXT_PUBLIC_SITE_URL;return origin?[{url:origin,changeFrequency:'monthly',priority:1}]:[];}
+
+import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+    
+url: "https://healthythaimassagehouston.com",
+
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+  ];
+}
