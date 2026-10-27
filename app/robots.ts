@@ -1,3 +1,14 @@
-import type {MetadataRoute} from 'next';
-export const dynamic='force-static';
-export default function robots():MetadataRoute.Robots { const origin=process.env.NEXT_PUBLIC_SITE_URL; return {rules:{userAgent:'*',...(origin?{allow:'/'}:{disallow:'/'})},...(origin?{sitemap:`${origin}/sitemap.xml`}:{})}; }
+
+import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: "https://healthythaimassagehouston.com/sitemap.xml",
+  };
+}
