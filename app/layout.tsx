@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
 
 const siteUrl = "https://healthythaimassagehouston.com";
 
@@ -44,7 +45,7 @@ export default function Layout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}<Analytics/></body>
     </html>
   );
 }
