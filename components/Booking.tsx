@@ -1,8 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { analytics } from '@/lib/analytics-client';
 import { business } from '@/lib/content';
 import { deliveryEnabled, validateRequest, processRequest } from '@/lib/booking.mjs';
 export default function Booking(){
+ const requestLock=useRef(false);
  const [ready,setReady]=useState(false);
  useEffect(()=>setReady(true),[]);
  const [status,setStatus]=useState(''); const [sending,setSending]=useState(false); const [success,setSuccess]=useState(false);
@@ -10,17 +12,18 @@ export default function Booking(){
  const enabled=deliveryEnabled(endpoint,process.env.NEXT_PUBLIC_FORM_DELIVERY_VERIFIED,process.env.NEXT_PUBLIC_BOOKING_MODE);
  const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
  async function submit(e:React.FormEvent<HTMLFormElement>){
-  e.preventDefault(); if(sending)return;
+  e.preventDefault(); if(requestLock.current)return;
   const formElement=e.currentTarget;
   const form=new FormData(formElement); const data=Object.fromEntries(form.entries()) as Record<string,string>;
   if(data._gotcha){setStatus('Unable to submit. Please call or text us.');return;}
   const error=validateRequest(data,today()); if(error){setStatus(error);return;}
   if(!enabled){const result=await processRequest({live:false});setStatus(result.message);formElement.reset();return;}
-  setSending(true);setStatus('');
+  requestLock.current=true;setSending(true);setStatus('');
   try{const response=await fetch(endpoint!,{method:'POST',body:form,headers:{Accept:'application/json'},signal:AbortSignal.timeout(20000)});
    const result=await response.json(); if(!response.ok || result.ok !== true)throw new Error('delivery');
+   try{analytics()?.bookingSuccess({ok:response.ok,body:result,mode:'live'},form);}catch{/* Analytics must never affect a delivered booking. */}
    setSuccess(true);
-  }catch{setStatus('Your request could not be confirmed as submitted. Please call or text us for help.');}finally{setSending(false);}
+  }catch{requestLock.current=false;setStatus('Your request could not be confirmed as submitted. Please call or text us for help.');}finally{setSending(false);}
  }
  return success?<div className="success" role="status"><span className="eyebrow">Thank you</span><h3>Your moment is one step closer.</h3><p>Your appointment request has been received. Our team will contact you to confirm availability.</p></div>:<form onSubmit={submit} className="booking-form" autoComplete={enabled?'on':'off'} aria-describedby="booking-mode">
  <div className="form-heading"><h3>Make time for you.</h3><span>No online payment</span></div>
@@ -38,7 +41,7 @@ export default function Booking(){
  <div className="honeypot" aria-hidden="true"><label>Leave this empty<input name="_gotcha" tabIndex={-1} autoComplete="off"/></label></div>
  <input type="hidden" name="_subject" value="Healthy Thai Massage — appointment request"/>
  {!enabled&&<p className="form-notice">For a real appointment, please <a href={`tel:${business.tel}`}>call</a> or <a href={`sms:${business.tel}`}>text {business.phone}</a> to request an appointment. SMS is subject to this number supporting text messages.</p>}
- <button className="button primary submit" type="submit" disabled={!ready||sending}>{sending?'Sending request…':enabled?'Request an Appointment':'Try Demo Request'} <span>↗</span></button>
+ <button data-analytics-event="booking_submit_click" data-booking-mode={enabled?'live':'demo'} className="button primary submit" type="submit" disabled={!ready||sending}>{sending?'Sending request…':enabled?'Request an Appointment':'Try Demo Request'} <span>↗</span></button>
  <p role="status" aria-live="polite" className="form-feedback">{status}</p><p className="privacy-line">{enabled?'By submitting, you agree to be contacted about this request.':'Demo entries are used only on this page and cleared after a valid demo. No information is sent to our team.'} <a href="#privacy">Privacy notice</a>.</p>
  </fieldset><noscript><p className="form-notice">This demo requires JavaScript. Please call (713) 239-2424 for a real appointment.</p></noscript></form>
 }
