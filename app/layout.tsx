@@ -21,6 +21,22 @@ export const metadata: Metadata = {
     follow: true,
   },
 
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Healthy Thai Massage — Relax. Restore. Rejuvenate.",
+    description: "Your moment of tranquility on Westheimer Road, Houston.",
+    images: [{ url: "/branding/social-preview.png", alt: "Healthy Thai Massage — Relax. Restore. Rejuvenate. Houston, Texas" }],
+  },
+
   openGraph: {
     title: "Healthy Thai Massage — Relax. Restore. Rejuvenate.",
     description: "Your moment of tranquility on Westheimer Road, Houston.",
@@ -29,10 +45,10 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: "/images/hero.jpg",
-        width: 1800,
-        height: 2400,
-        alt: "Illustrative tranquil spa atmosphere",
+        url: "/branding/social-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Healthy Thai Massage — Relax. Restore. Rejuvenate. Houston, Texas",
       },
     ],
   },
