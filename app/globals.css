@@ -16,3 +16,8 @@
     height:41px;
   }
 }
+
+/* Official branding: scoped to preserve the working navigation logo. */
+footer .footer-logo{width:40px;height:54px;object-fit:contain;flex-shrink:0}
+.visual-seal{display:flex;align-items:center;justify-content:center;padding:12px}
+.visual-seal .seal-logo{width:100%;height:100%;object-fit:contain}
