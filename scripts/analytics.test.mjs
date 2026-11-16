@@ -34,3 +34,10 @@ test('consent expires and malformed/future choices never authorize tracking',()=
  assert.equal(consentValid({choice:'accepted',at:1000},1001),true);
  for(const record of [null,{}, {choice:'yes',at:1000},{choice:'accepted',at:2000},{choice:'accepted',at:1000-181*86400000}])assert.ok(!consentValid(record,1001));
 });
+
+test('Setmore reservations count as booking clicks without tracking unrelated domains',()=>{
+ assert.equal(classifyLink('https://healthythaimassage4kve.setmore.com'),'booking_click');
+ assert.equal(classifyLink('https://healthythaimassage4kve.setmore.com/'),'booking_click');
+ assert.equal(classifyLink('https://other.setmore.com/'),null);
+ assert.equal(classifyLink('https://healthythaimassage4kve.setmore.com.example.com/'),null);
+});
