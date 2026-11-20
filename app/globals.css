@@ -70,3 +70,23 @@ footer .footer-logo{width:40px;height:54px;object-fit:contain;flex-shrink:0}
   .gallery-grid figcaption{font-size:16px;line-height:1.5;margin-top:16px}
   .gallery-note{font-size:14px;line-height:1.7;margin-top:28px}
 }
+
+/* Desktop services share the gallery's image proportions and spacing. */
+@media(min-width:1024px){
+  .services.section{max-width:none;width:100%;padding:72px 4%}
+  .services .section-heading{gap:48px;margin-bottom:36px}
+  .services .eyebrow{font-size:14px}
+  .services .section-heading h2{font-size:clamp(54px,4.2vw,76px)}
+  .services .section-heading>p{font-size:18px;max-width:430px;line-height:1.7}
+  .services .sample-notice{font-size:14px;line-height:1.7;max-width:none;margin-bottom:28px}
+  .services .service-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+  .services .service-card{min-width:0;display:flex;flex-direction:column}
+  .services .service-image{height:auto;aspect-ratio:4/3;flex-shrink:0}
+  .services .service-image img{width:100%;height:100%;object-fit:cover}
+  .services .service-image>span{font-size:12px}
+  .services .service-title{margin:24px 0 16px;align-items:baseline}
+  .services .service-title h3{font-size:clamp(28px,2.1vw,38px)}
+  .services .service-title>span{font-size:14px}
+  .services .service-card>p{font-size:16px;line-height:1.7;min-height:0;margin-bottom:20px}
+  .services .service-card .text-link{align-self:flex-start;margin-top:auto;font-size:16px;min-height:44px}
+}
