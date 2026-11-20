@@ -90,3 +90,24 @@ footer .footer-logo{width:40px;height:54px;object-fit:contain;flex-shrink:0}
   .services .service-card>p{font-size:16px;line-height:1.7;min-height:0;margin-bottom:20px}
   .services .service-card .text-link{align-self:flex-start;margin-top:auto;font-size:16px;min-height:44px}
 }
+
+/* Keep the phone layout; simplify booking and combine contact/reviews on desktop. */
+.contact-reviews,.reviews-desktop-link{display:none}
+@media(min-width:1024px){
+  .booking-section{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:64px 4%;gap:64px}
+  .booking-card{display:block}
+  .booking-card-image{display:none}
+  .booking-card-content{padding:40px}
+  .booking-cta{justify-content:center;font-size:16px}
+  .booking-card-content>p{font-size:16px}
+  .booking-copy>p{font-size:16px;max-width:460px}
+  .contact.section{max-width:none;padding:72px 4%;gap:6%;align-items:start}
+  .contact h2{font-size:clamp(44px,3.8vw,64px)}
+  .contact address,.contact p{font-size:16px}
+  .contact .map-panel{min-height:560px;align-self:stretch}
+  .contact .map-panel iframe{min-height:470px}
+  .contact-reviews{display:flex;gap:16px;margin-top:28px;scroll-margin-top:120px}
+  .contact-reviews .button{font-size:16px;min-height:54px;flex:1;padding:16px;text-align:center}
+  .reviews.section,.reviews-mobile-link{display:none}
+  .reviews-desktop-link{display:inline}
+}
