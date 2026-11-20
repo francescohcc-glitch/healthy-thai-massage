@@ -208,3 +208,23 @@ button,input,select,textarea{font-family:var(--font-system)}
   .header .nav{margin-right:auto}
   .header-actions{width:840px;max-width:840px;flex-shrink:0;gap:10px;margin-left:auto}
 }
+
+/* Compact phone header with just reviews and booking. */
+.mobile-header-actions{display:none}
+@media(max-width:850px){
+  .header{height:78px;min-height:78px;padding:10px 4%;gap:12px;justify-content:space-between}
+  .header .menu-toggle,.header .nav,.header>.nav-book{display:none}
+  .mobile-header-actions{display:flex;align-items:center;gap:7px;margin-left:auto;flex-shrink:0}
+  .mobile-header-actions .button{min-height:40px;height:40px;padding:8px 10px;font-size:12px;font-weight:400;line-height:1.2;letter-spacing:0;border-radius:5px;gap:0;white-space:nowrap}
+  .header .brand{font-size:12px;gap:7px;letter-spacing:.025em}
+  .header .brand small{font-size:7px;letter-spacing:.08em;margin-top:4px}
+  .header .brand-mark{width:26px;height:36px}
+}
+@media(max-width:374px){
+  .header{padding-inline:3%;gap:6px}
+  .header .brand{font-size:10px;gap:5px}
+  .header .brand small{font-size:6px}
+  .header .brand-mark{width:22px;height:30px}
+  .mobile-header-actions{gap:5px}
+  .mobile-header-actions .button{padding-inline:7px;font-size:11px}
+}
