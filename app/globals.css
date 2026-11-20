@@ -140,3 +140,24 @@ em{font-style:normal;font-weight:600}
 button,input,select,textarea{font-family:var(--font-system)}
 .hero h1{font-size:clamp(56px,6vw,100px);letter-spacing:-.045em;line-height:1.06}
 @media(max-width:600px){.hero h1{font-size:clamp(36px,10.5vw,63px)}.booking-copy h2{font-size:clamp(34px,9vw,46px)}.contact h2{font-size:clamp(32px,8.5vw,43px)}}
+
+/* A simple, balanced about section on phones and desktop. */
+.about.section{max-width:1440px;padding:80px 5%;gap:clamp(32px,5vw,80px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+.about-visual{width:100%;height:auto;min-width:0}
+.about-visual>img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
+.about .image-caption{font-size:12px;line-height:1.6;padding-top:12px;letter-spacing:0}
+.about-copy{min-width:0}
+.about-copy .eyebrow{font-size:12px;letter-spacing:.12em;line-height:1.6}
+.about-copy h2{font-size:clamp(36px,3.8vw,56px);line-height:1.12;margin:20px 0 28px}
+.about-copy>p{max-width:580px;font-size:18px;line-height:1.8;margin-bottom:20px}
+.about-copy .text-link{font-size:16px;min-height:48px;margin-top:4px}
+.about-copy .mini-detail{margin-top:24px;padding-top:20px}
+.about-copy .mini-detail p{font-size:16px;line-height:1.7}
+@media(max-width:700px){
+  .about.section{grid-template-columns:1fr;padding:48px 6%;gap:32px}
+  .about-visual>img{aspect-ratio:4/3;border-radius:12px}
+  .about-copy h2{font-size:clamp(32px,8.5vw,42px);margin:16px 0 24px}
+  .about-copy>p{font-size:17px;line-height:1.75}
+  .about-copy .eyebrow{font-size:11px}
+  .about .image-caption{font-size:12px}
+}
