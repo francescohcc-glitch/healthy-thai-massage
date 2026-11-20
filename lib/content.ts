@@ -1,5 +1,5 @@
 export const business = {
- name: 'Healthy Thai Massage', address: '6464 Westheimer Rd', city: 'Houston, TX 77057', phone: '(713) 239-2424', tel: '+17132392424', email: '6464healthy@gmail.com', hours: 'Please call or text to confirm current hours.',
+ name: 'Healthy Thai Massage', address: '6464 Westheimer Rd', city: 'Houston, TX 77057', phone: '(713) 239-2424', tel: '+17132392424', email: 'healthythaimassagehouston@gmail.com', hours: 'Please call or text to confirm current hours.',
  headline: 'Relax. Restore. Rejuvenate.', intro: 'Discover a moment of tranquility at Healthy Thai Massage in Houston, Texas.',
  about: 'A little time for yourself can change the rhythm of your day. At Healthy Thai Massage, we welcome you to slow down, settle in, and make space for your wellbeing. Visit us on Westheimer Road for a relaxing pause in the heart of Houston.',
  directions: 'https://www.google.com/maps/dir/?api=1&destination=6464+Westheimer+Rd+Houston+TX+77057',
