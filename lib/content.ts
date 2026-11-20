@@ -3,6 +3,8 @@ export const business = {
  headline: 'Relax. Restore. Rejuvenate.', intro: 'Discover a moment of tranquility at Healthy Thai Massage in Houston, Texas.',
  about: 'A little time for yourself can change the rhythm of your day. At Healthy Thai Massage, we welcome you to slow down, settle in, and make space for your wellbeing. Visit us on Westheimer Road for a relaxing pause in the heart of Houston.',
  directions: 'https://www.google.com/maps/dir/?api=1&destination=6464+Westheimer+Rd+Houston+TX+77057',
+ googleReview: 'https://g.page/r/CawVHXBJCFQOEAE/review',
+ yelpReview: 'https://www.yelp.com/biz/healthy-thai-massage-houston',
  services: [
   {name:'Traditional Thai Massage',number:'01',description:'A traditional approach often combining mindful movement, stretching, and pressure. Ask our team about available options.',image:'/images/thai.jpg',alt:'Illustrative hot-stone massage; not a depiction of the listed service'},
   {name:'Swedish Massage',number:'02',description:'Often associated with flowing movements and a gentle pace. Talk with us about your preferred experience.',image:'/images/swedish.jpg',alt:'Illustrative massage treatment with a relaxing atmosphere'},
