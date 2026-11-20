@@ -9,7 +9,7 @@ export default function Booking() {
         <span className="eyebrow">EASY ONLINE BOOKING</span>
         <h3>Your relaxation awaits.</h3>
         <p>Choose your massage and reserve your preferred time on our Setmore booking page.</p>
-        <a className="button primary booking-cta" href="https://healthythaimassage4kve.setmore.com">Book Your Massage <span aria-hidden="true">↗</span></a>
+        <a className="button primary booking-cta" href="https://healthythaimassage4kve.setmore.com">Book Your Massage</a>
         <p className="booking-provider">Continue to Setmore to complete your reservation.</p>
       </div>
     </div>
