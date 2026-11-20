@@ -11,7 +11,7 @@ export const business = {
   {name:'Deep Tissue Massage',number:'03',description:'An approach often focused on firmer pressure. Let our team know your comfort level when asking about availability.',image:'/images/deep.jpg',alt:'Illustrative massage and wellness setting'},
  ],
  gallery: [
-  {src:'/images/room.jpg',alt:'Illustrative tranquil treatment room with warm natural finishes',label:'A quieter setting'},
+  {src:'/images/room-clean.jpg',alt:'Illustrative tranquil treatment room with warm natural finishes',label:'A quieter setting'},
   {src:'/images/deep.jpg',alt:'Illustrative focused massage treatment',label:'Thoughtful little details'},
   {src:'/images/swedish.jpg',alt:'Illustrative relaxing massage treatment',label:'Time to unwind'},
  ],

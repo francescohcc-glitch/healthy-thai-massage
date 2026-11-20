@@ -2,7 +2,7 @@ export default function Booking() {
   return (
     <div className="booking-card">
       <div className="booking-card-image">
-        <img src="/images/room.jpg" alt="Illustrative spa room with warm natural finishes" loading="lazy" width={900} height={1100} />
+        <img src="/images/room-clean.jpg" alt="Illustrative spa room with warm natural finishes" loading="lazy" width={900} height={1100} />
         <span>Illustrative spa setting</span>
       </div>
       <div className="booking-card-content">
