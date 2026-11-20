@@ -6,7 +6,7 @@ export const business = {
  googleReview: 'https://g.page/r/CawVHXBJCFQOEAE/review',
  yelpReview: 'https://www.yelp.com/biz/healthy-thai-massage-houston',
  services: [
-  {name:'Traditional Thai Massage',number:'01',description:'A traditional approach often combining mindful movement, stretching, and pressure. Ask our team about available options.',image:'/images/thai.jpg',alt:'Illustrative hot-stone massage; not a depiction of the listed service'},
+  {name:'Traditional Thai Massage',number:'01',description:'A traditional approach often combining mindful movement, stretching, and pressure. Ask our team about available options.',image:'/images/thai-clean.jpg',alt:'Illustrative hot-stone massage; not a depiction of the listed service'},
   {name:'Swedish Massage',number:'02',description:'Often associated with flowing movements and a gentle pace. Talk with us about your preferred experience.',image:'/images/swedish.jpg',alt:'Illustrative massage treatment with a relaxing atmosphere'},
   {name:'Deep Tissue Massage',number:'03',description:'An approach often focused on firmer pressure. Let our team know your comfort level when asking about availability.',image:'/images/deep.jpg',alt:'Illustrative massage and wellness setting'},
  ],
