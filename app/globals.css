@@ -111,3 +111,14 @@ footer .footer-logo{width:40px;height:54px;object-fit:contain;flex-shrink:0}
   .reviews.section,.reviews-mobile-link{display:none}
   .reviews-desktop-link{display:inline}
 }
+
+/* A quieter desktop header and hero; phone styles stay unchanged. */
+@media(min-width:1024px){
+  .header{justify-content:flex-start;gap:clamp(24px,3vw,56px)}
+  .header .nav{margin-left:0;margin-right:auto;justify-content:flex-start}
+  .header .nav-book{margin-left:auto;flex-shrink:0}
+  .hero-content>.eyebrow,.hero-content>p,.hero-bottom{display:none}
+  .hero-content{height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:48px;padding-bottom:48px}
+  .hero-content h1{margin:0 0 32px}
+  .hero-actions{margin-top:0}
+}
